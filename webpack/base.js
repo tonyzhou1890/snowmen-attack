@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin  = require('copy-webpack-plugin')
 
 module.exports = {
   mode: "development",
@@ -14,6 +15,18 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: "css-loader"
+          }
+        ]
       },
       {
         test: [/\.vert$/, /\.frag$/],
@@ -35,6 +48,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: "./index.html"
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: path.resolve(__dirname, "../src/public"),
+        to: './public'
+      }]
     })
   ]
 };

@@ -1,39 +1,33 @@
 import Phaser from 'phaser';
-import logoImg from './assets/logo.png';
+import { baseUrl } from './config'
+import { systemInfo } from './utils/util'
+import './styles/index.css'
+import Boot from './Boot'
+import Preloader from './Preloader'
+import MainMenu from './MainMenu'
 
-class MyGame extends Phaser.Scene
-{
-    constructor ()
-    {
-        super();
-    }
+const { fitWidth, fitHeight, scale } = systemInfo(800, 600)
 
-    preload ()
-    {
-        this.load.image('logo', logoImg);
-    }
-      
-    create ()
-    {
-        const logo = this.add.image(400, 150, 'logo');
-      
-        this.tweens.add({
-            targets: logo,
-            y: 450,
-            duration: 2000,
-            ease: "Power2",
-            yoyo: true,
-            loop: -1
-        });
-    }
-}
 
 const config = {
-    type: Phaser.AUTO,
-    parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    scene: MyGame
+  type: Phaser.AUTO,
+  parent: 'root',
+  width: fitWidth,
+  height: fitHeight,
+  backgroundColor: '#3366b2',
+  scale: {
+    mode: Phaser.Scale.ScaleModes.FIT
+  },
+  loader: {
+    baseURL: baseUrl
+  },
+  scene: [Boot, Preloader, MainMenu],
+  physics: {
+    ddefault: 'arcade',
+    arcade: {
+      debug: false
+    }
+  }
 };
 
 const game = new Phaser.Game(config);
