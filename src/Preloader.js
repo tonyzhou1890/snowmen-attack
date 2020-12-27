@@ -16,7 +16,12 @@ export default class Preloader extends Phaser.Scene {
     this.loadText = this.add.text(
       this.width / 2,
       this.height / 2,
-      textStr
+      textStr,
+      {
+        fontFamily: 'Arial',
+        fontSize: 74,
+        color: '#e3f2ed'
+      }
     )
     this.loadText.setOrigin(0.5)
     this.loadText.setStroke('#203c5b', 6)
@@ -25,6 +30,7 @@ export default class Preloader extends Phaser.Scene {
     // 图片、纹理集
     this.load.image(['background', 'overlay', 'gameover', 'title'])
     this.load.atlas('sprites', 'sprites.png', 'sprites.json')
+    this.load.glsl('snow', 'snow.glsl.js')
     
     // 音频
     this.load.setPath('sounds/')

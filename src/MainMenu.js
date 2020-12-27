@@ -13,15 +13,17 @@ export default class MainMenu extends Phaser.Scene {
 
     this.sound.play('music', { loop: true, delay: 2 })
 
-    let ball1 = this.add.image(-64, this.height / 2, 'sprites', 'snowball1')
-    let ball2 = this.add.image(this.width + 288, this.height * 0.6, 'sprites', 'snowball1')
-    let ball3 = this.add.image(-64, this.height * 0.5333, 'sprites', 'snowball1')
-    let logo = this.add.image(this.width + 900, this.height * 0.64, 'title')
+    this.add.shader('snow', this.width / 2, this.height / 2, this.width, this.height);
+
+    let ball1 = this.add.image(-64, this.height * 0.4, 'sprites', 'snowball1')
+    let ball2 = this.add.image(this.width + 64, this.height * 0.468, 'sprites', 'snowball1')
+    let ball3 = this.add.image(-64, this.height * 0.42, 'sprites', 'snowball1')
+    let logo = this.add.image(this.width + 676, this.height * 0.5, 'title')
 
     this.tweens.add({
       targets: ball1,
-      x: this.width + 288,
-      y: this.height * 0.6,
+      x: this.width + 64,
+      y: this.height * 0.468,
       ease: 'cubic.out',
       duration: 600,
       onStart: () => {
@@ -32,7 +34,7 @@ export default class MainMenu extends Phaser.Scene {
     this.tweens.add({
       targets: ball2,
       x: -64,
-      y: this.height * 0.467,
+      y: 280,
       ease: 'cubic.out',
       delay: 700,
       duration: 600,
@@ -43,8 +45,8 @@ export default class MainMenu extends Phaser.Scene {
 
     this.tweens.add({
       targets: ball3,
-      x: this.width + 288,
-      y: this.height * 0.63,
+      x: this.width + 64,
+      y: 380,
       ease: 'cubic.out',
       delay: 1200,
       duration: 600,

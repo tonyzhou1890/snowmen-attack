@@ -5,8 +5,9 @@ import './styles/index.css'
 import Boot from './Boot'
 import Preloader from './Preloader'
 import MainMenu from './MainMenu'
+import MainGame from './MainGame'
 
-const { fitWidth, fitHeight, scale } = systemInfo(800, 600)
+const { fitWidth, fitHeight, scale } = systemInfo(1024, 768)
 
 
 const config = {
@@ -21,9 +22,9 @@ const config = {
   loader: {
     baseURL: baseUrl
   },
-  scene: [Boot, Preloader, MainMenu],
+  scene: [Boot, Preloader, MainMenu, MainGame],
   physics: {
-    ddefault: 'arcade',
+    default: 'arcade',
     arcade: {
       debug: false
     }
