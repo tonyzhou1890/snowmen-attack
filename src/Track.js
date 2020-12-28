@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import Snowman from './Snowman'
 import PlayerSnowball from './PlayerSnowball'
 import EnemySnowball from './EnemySnowball'
+import TouchRect from './TouchRect'
 
 export default class Track {
   constructor(scene, id, trackY) {
@@ -9,6 +10,7 @@ export default class Track {
     this.id = id
     this.y = trackY
     this.gameWidth = scene.game.config.width
+    this.gameHeight = scene.game.config.height
 
     this.nest = scene.physics.add.image(this.gameWidth, trackY - 10, 'sprites', 'nest').setOrigin(1, 1)
 
@@ -32,6 +34,9 @@ export default class Track {
       visible: false,
       classType: EnemySnowball
     })
+
+    this.touchRect = new TouchRect(scene, this.gameWidth - 200, this.y - this.gameHeight * 0.15, 200, this.gameHeight * 0.15, id)
+    this.touchRect.draw()
 
     this.snowBallCollider = scene.physics.add.overlap(this.playerSnowballs, this.enemySnowballs, this.hitSnowball, null, this)
     this.snowmanSmallCollider = scene.physics.add.overlap(this.snowmanSmall, this.playerSnowballs, this.hitSnowman, null, this)
@@ -57,6 +62,8 @@ export default class Track {
         this.snowmanBig.start()
       }
     })
+
+    this.touchRect.clearRect()
   }
 
   stop() {

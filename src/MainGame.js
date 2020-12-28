@@ -62,7 +62,7 @@ export default class MainGame extends Phaser.Scene {
     })
 
     this.input.keyboard.once('keydown-SPACE', this.start, this)
-    this.input.on('pointerdown', this.start, this)
+    this.input.once('pointerdown', this.start, this)
     this.input.keyboard.once('keydown-UP', this.start, this)
     this.input.keyboard.once('keydown-DOWN', this.start, this)
   }

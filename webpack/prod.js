@@ -6,7 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = merge(base, {
   mode: "production",
   output: {
-    filename: "bundle.min.js"
+    filename: "bundle.min.[chunkhash].js"
   },
   devtool: false,
   performance: {
@@ -23,5 +23,8 @@ module.exports = merge(base, {
         }
       })
     ]
+  },
+  externals: {
+    'phaser': 'Phaser'
   }
 });

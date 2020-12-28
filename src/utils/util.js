@@ -34,3 +34,17 @@ export function systemInfo(initWidth, initHeight) {
     fitHeight
   }
 }
+
+/**
+ * 横屏检测
+ */
+export function isLandscape() {
+  return window.innerWidth > window.innerHeight || (window.orientation === 90 || window.orientation === -90)
+}
+
+/**
+ * 全屏检测
+ */
+export function isFullscreen() {
+  return document.fullscreenElement === document.querySelector('#root')
+}

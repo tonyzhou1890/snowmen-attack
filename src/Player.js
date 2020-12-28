@@ -35,7 +35,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.play('idle', true)
   }
 
-  moveTo(i) {
+  handleTouch(i) {
+    if (this.currentTrack.id !== i) {
+      this.moveToTrack(i)
+    } else if (!this.isThrowing) {
+      this.throw()
+    }
+  }
+
+  moveToTrack(i) {
     this.currentTrack = this.scene.tracks[i]
 
     this.y = this.currentTrack.y

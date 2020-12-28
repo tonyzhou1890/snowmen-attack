@@ -4,8 +4,8 @@
   "description": "雪人攻击——phaser3 小游戏",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "build": "cross-env ENV='prod' webpack --config webpack/prod.js ",
+    "start": "cross-env ENV='dev' webpack-dev-server --config webpack/base.js --open"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "6.2.1",
+    "cross-env": "^7.0.3",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "raw-loader": "^3.1.0",

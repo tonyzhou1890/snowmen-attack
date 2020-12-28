@@ -13,7 +13,7 @@ export default class MainMenu extends Phaser.Scene {
 
     this.sound.play('music', { loop: true, delay: 2 })
 
-    this.add.shader('snow', this.width / 2, this.height / 2, this.width, this.height);
+    // this.add.shader('snow', this.width / 2, this.height / 2, this.width, this.height);
 
     let ball1 = this.add.image(-64, this.height * 0.4, 'sprites', 'snowball1')
     let ball2 = this.add.image(this.width + 64, this.height * 0.468, 'sprites', 'snowball1')

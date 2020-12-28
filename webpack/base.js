@@ -44,10 +44,16 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
-      WEBGL_RENDERER: JSON.stringify(true)
+      WEBGL_RENDERER: JSON.stringify(true),
+      'process.env.ENV': `'${process.env.ENV}'`,
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html"
+      template: "./index.html",
+      externals: process.env.ENV === 'prod' ? [
+        {
+          script: '<script crossorigin="anonymous" integrity="sha512-6lH+74DKRVuBnG6AbV32FwjdWfg/J2Eil6F4oqbzWeOfF9Y1oXGVdecVRTSj6dERvBXdLTVYLYTXA2wBajNtJg==" src="https://lib.baomitu.com/phaser/3.50.1/phaser.js"></script>'
+        }
+      ] : []
     }),
     new CopyWebpackPlugin({
       patterns: [{
@@ -55,5 +61,5 @@ module.exports = {
         to: './public'
       }]
     })
-  ]
+  ],
 };
