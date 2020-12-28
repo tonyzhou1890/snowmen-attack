@@ -1,6 +1,6 @@
 {
   "name": "snowmen-attack",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "雪人攻击——phaser3 小游戏",
   "main": "src/index.js",
   "scripts": {
