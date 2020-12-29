@@ -51,7 +51,7 @@ module.exports = {
       template: "./index.html",
       externals: process.env.ENV === 'prod' ? [
         {
-          script: '<script crossorigin="anonymous" integrity="sha512-6lH+74DKRVuBnG6AbV32FwjdWfg/J2Eil6F4oqbzWeOfF9Y1oXGVdecVRTSj6dERvBXdLTVYLYTXA2wBajNtJg==" src="https://lib.baomitu.com/phaser/3.50.1/phaser.js"></script>'
+          script: '<script crossorigin="anonymous" integrity="sha512-2kb3Q9IR7K9be52kC2yJGEflRxcLWqIzKlwki1I6Y9TMP2sqneTYdbYe1b/+7EJyr2c8mBH6/QrlC+eqbvJdSg==" src="https://lib.baomitu.com/phaser/3.50.1/phaser.min.js"></script>'
         }
       ] : []
     }),
